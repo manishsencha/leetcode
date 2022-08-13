@@ -16,7 +16,7 @@ public:
             mp1[words[j]]++; 
         }
         for(int i = 0; i <= s.size() - target; i++) {
-            auto mp = mp1;
+            unordered_map<string, int> mp = mp1;
             int k;
             for(k=0; k < wq; k++) {
                 string s1 = s.substr(i + k * wl, wl);
