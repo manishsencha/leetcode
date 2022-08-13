@@ -10,12 +10,13 @@ public:
         if(s.size() < target) {
             return ans;
         }
+        unordered_map<string, int> mp1;
         
+        for(int j=0; j < wq; j++) {
+            mp1[words[j]]++; 
+        }
         for(int i = 0; i <= s.size() - target; i++) {
-            unordered_map<string, int> mp;
-            for(int j=0; j < wq; j++) {
-                mp[words[j]]++; 
-            }
+            unordered_map<string, int> mp = mp1;
             int k;
             for(k=0; k < wq; k++) {
                 string s1 = s.substr(i + k * wl, wl);
