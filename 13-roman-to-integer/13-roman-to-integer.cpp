@@ -1,14 +1,22 @@
 class Solution {
 public:
     int romanToInt(string s) {
-        map<char, int> mp {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
+        vector<int> v(26);
+        v['I' - 'A'] =  1;
+        v['V' - 'A'] =  5;
+        v['X' - 'A'] =  10;
+        v['L' - 'A'] =  50;
+        v['C' - 'A'] =  100;
+        v['D' - 'A'] =  500;
+        v['M' - 'A'] =  1000;
+        
         int n = s.length(), res = 0;
          for(int i = 0; i < n; ++i){
-            if(i >= 1 && mp[s[i-1]] < mp[s[i]]){
-                res += (mp[s[i]] - (2*mp[s[i-1]]));   
+            if(i >= 1 && v[s[i-1] - 'A'] < v[s[i] - 'A']){
+                res += (v[s[i] - 'A'] - (2*v[s[i-1] - 'A']));   
                 continue;
             }
-            res += mp[s[i]];
+            res += v[s[i] - 'A'];
         }
         return res;
     }
