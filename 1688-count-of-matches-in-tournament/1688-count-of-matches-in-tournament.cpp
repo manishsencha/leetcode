@@ -4,9 +4,7 @@ public:
         int c = 0;
         while(n > 1) {
             c += (n >> 1);
-            int t = n >> 1;
-            if(n & 1) n = t + 1;
-            else n = t;
+            n = n & 1 ? (n >> 1) + 1 : n >> 1;
         }
         return c;
     }
