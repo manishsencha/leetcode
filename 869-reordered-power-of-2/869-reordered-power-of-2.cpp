@@ -1,28 +1,27 @@
 class Solution {
 public:
     bool res = false;
-    bool p(int n) {
-        if(n == 1) return true;
-        if(n & 1) return false;
-        return p(n/2);
-    }
     bool reorderedPowerOf2(int n) {
         string s = to_string(n);
+        vector<int> val;
+        for(int i = 1; i <= 1e9; i *= 2) val.push_back(i);
         int l = s.length();
-        vector<string> v;
-        f(s, v, 0, l);
+        f(s, 0, l, val);
         return res;
     }
-    void f(string s, vector<string> &v, int ind, int n) {
+    void f(string s, int ind, int n, vector<int> &v) {
         if(ind == n) {
             if(s[0] != '0') {
-                res |= p(stoi(s));   
-            } 
+                int a = stoi(s);
+                for(auto i : v) {
+                    if(i == a) res |= true;
+                }
+            }
             return;
         }
         for(int i = ind; i < n; ++i) {
             swap(s[i], s[ind]);
-            f(s, v, ind + 1, n);
+            f(s, ind + 1, n, v);
             swap(s[i], s[ind]);
         }
     }
