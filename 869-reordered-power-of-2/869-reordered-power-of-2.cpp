@@ -1,5 +1,6 @@
 class Solution {
 public:
+    bool res = false;
     bool p(int n) {
         if(n == 1) return true;
         if(n & 1) return false;
@@ -10,22 +11,13 @@ public:
         int l = s.length();
         vector<string> v;
         f(s, v, 0, l);
-        vector<int> vi;
-        for(auto i : v) {
-            if(i[0] != '0') {
-                // cout << i << ' ';
-                vi.push_back(stoi(i));
-            }
-        }
-        for(auto i : vi) {
-            if(p(i)) return true;
-        }
-        return false;
-        
+        return res;
     }
     void f(string s, vector<string> &v, int ind, int n) {
         if(ind == n) {
-            v.push_back(s);
+            if(s[0] != '0') {
+                res |= p(stoi(s));   
+            } 
             return;
         }
         for(int i = ind; i < n; ++i) {
