@@ -8,6 +8,9 @@ public:
                 c++;
                 coins -= costs[i];
             }
+            else {
+                break;
+            }
         }
         return c;
     }
