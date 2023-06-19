@@ -13,11 +13,9 @@ public:
             ans.insert(ds);
             return; 
         }
-        for(int i = ind; i < nums.size(); ++i) {
-            ds.push_back(nums[i]);
-            rec(ans, ds, nums, i + 1);
+            ds.push_back(nums[ind]);
+            rec(ans, ds, nums, ind + 1);
             ds.pop_back();
-            rec(ans, ds, nums, i + 1);
-        }
+            rec(ans, ds, nums, ind + 1);
     }
 };
